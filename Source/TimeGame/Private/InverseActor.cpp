@@ -10,8 +10,8 @@ AInverseActor::AInverseActor()
  	// Set this actor to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
 	PrimaryActorTick.bCanEverTick = true;
 
-	meshComp = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("meshComp"));
-	RootComponent = meshComp;
+	//meshComp = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("meshComp"));
+	//RootComponent = meshComp;
 }
 
 // Called when the game starts or when spawned
