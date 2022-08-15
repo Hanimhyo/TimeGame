@@ -73,20 +73,20 @@ void ATimeGameCharacter::SetupPlayerInputComponent(class UInputComponent* Player
 	PlayerInputComponent->BindTouch(IE_Released, this, &ATimeGameCharacter::TouchStopped);
 
 	// VR headset functionality
-	PlayerInputComponent->BindAction("ResetVR", IE_Pressed, this, &ATimeGameCharacter::OnResetVR);
+	//PlayerInputComponent->BindAction("ResetVR", IE_Pressed, this, &ATimeGameCharacter::OnResetVR);
 }
 
 
-void ATimeGameCharacter::OnResetVR()
-{
-	// If TimeGame is added to a project via 'Add Feature' in the Unreal Editor the dependency on HeadMountedDisplay in TimeGame.Build.cs is not automatically propagated
-	// and a linker error will result.
-	// You will need to either:
-	//		Add "HeadMountedDisplay" to [YourProject].Build.cs PublicDependencyModuleNames in order to build successfully (appropriate if supporting VR).
-	// or:
-	//		Comment or delete the call to ResetOrientationAndPosition below (appropriate if not supporting VR)
-	UHeadMountedDisplayFunctionLibrary::ResetOrientationAndPosition();
-}
+//void ATimeGameCharacter::OnResetVR()
+//{
+//	// If TimeGame is added to a project via 'Add Feature' in the Unreal Editor the dependency on HeadMountedDisplay in TimeGame.Build.cs is not automatically propagated
+//	// and a linker error will result.
+//	// You will need to either:
+//	//		Add "HeadMountedDisplay" to [YourProject].Build.cs PublicDependencyModuleNames in order to build successfully (appropriate if supporting VR).
+//	// or:
+//	//		Comment or delete the call to ResetOrientationAndPosition below (appropriate if not supporting VR)
+//	UHeadMountedDisplayFunctionLibrary::ResetOrientationAndPosition();
+//}
 
 void ATimeGameCharacter::TouchStarted(ETouchIndex::Type FingerIndex, FVector Location)
 {
