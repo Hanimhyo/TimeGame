@@ -50,6 +50,15 @@ ATimeGameCharacter::ATimeGameCharacter()
 //////////////////////////////////////////////////////////////////////////
 // Input
 
+void ATimeGameCharacter::BeginPlay()
+{
+	Super::BeginPlay();
+
+	playerNowState = EPlayerState::MOVE;
+	playerSkillState = EPlayerSkillState::Inverse;
+	playerWeaponState = EPlayerWeaponState::Bazooka;
+}
+
 void ATimeGameCharacter::SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent)
 {
 	// Set up gameplay key bindings
@@ -109,6 +118,8 @@ void ATimeGameCharacter::LookUpAtRate(float Rate)
 	// calculate delta for this frame from the rate information
 	AddControllerPitchInput(Rate * BaseLookUpRate * GetWorld()->GetDeltaSeconds());
 }
+
+
 
 void ATimeGameCharacter::MoveForward(float Value)
 {

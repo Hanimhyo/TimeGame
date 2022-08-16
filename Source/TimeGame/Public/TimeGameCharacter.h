@@ -6,6 +6,32 @@
 #include "GameFramework/Character.h"
 #include "TimeGameCharacter.generated.h"
 
+
+UENUM(BluePrintType)
+enum class EPlayerState : uint8
+{
+	IDLE,
+	MOVE,
+	DAMAGE,
+	DIE
+};
+
+UENUM(BluePrintType)
+enum class EPlayerWeaponState : uint8
+{
+	Bazooka,
+	Sniper,
+	Mine
+};
+
+UENUM(BluePrintType)
+enum class EPlayerSkillState : uint8
+{
+	Inverse,
+	Stop,
+	Antigravity
+};
+
 UCLASS(config=Game)
 class ATimeGameCharacter : public ACharacter
 {
@@ -33,6 +59,7 @@ protected:
 
 	/** Resets HMD orientation in VR. */
 	//void OnResetVR();
+	virtual void BeginPlay() override;
 
 	/** Called for forwards/backward input */
 	void MoveForward(float Value);
@@ -68,5 +95,12 @@ public:
 	FORCEINLINE class USpringArmComponent* GetCameraBoom() const { return CameraBoom; }
 	/** Returns FollowCamera subobject **/
 	FORCEINLINE class UCameraComponent* GetFollowCamera() const { return FollowCamera; }
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = Status)
+	EPlayerState playerNowState;
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = Status)
+	EPlayerWeaponState playerWeaponState;
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = Status)
+	EPlayerSkillState playerSkillState;
 };
 
